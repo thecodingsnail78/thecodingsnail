@@ -1,20 +1,30 @@
+{% load static %}
 <html>
     <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/snailblog.css' %}">
         <title>thecodingsnail's blog</title>
     </head>
     <body>
-        <div>
+        <div class='page-header'>
             <h1><a href="/">thecodingsnail's blog</a></h1>
         </div> 
-        <div>
-            <p>published: 15th September 2020, 2.30pm</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Blah blah blah</p>
-        </div>
-        <div>
-            <p>published: 15th September 2020, 2.30pm</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Blah blah blah</p>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>published: {{ post.published_date }}</p>
+                            </div>
+                            <h2><a href="">{{ post.title }}</a></h2>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </body>
 </html>
