@@ -4,6 +4,7 @@
     {% if success == True %}
         <p>Thank you for contacting us!</p>
     {% else %}
+    <p>We'd love to hear from you!</p>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

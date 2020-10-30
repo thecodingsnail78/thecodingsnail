@@ -34,7 +34,7 @@ def resources(request):
     return render(request, "snailblog/resources.html", {'selected' : 'resources'})
 
 def post_list(request):
-    posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'snailblog/post_list.html', {'posts':posts,'selected' : 'blog'})
     
 def post_detail(request,pk):
