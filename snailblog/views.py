@@ -17,8 +17,8 @@ def contact_us(request):
             sender_name = form.cleaned_data['name']
             sender_email = form.cleaned_data['email']
 
-            message = "{0} has sent you a message\n{1}".format(sender_name, form.cleaned_data['message'])
-            send_mail('New Enquiry', message, sender_email, ['email@email.com'])
+            message = "{0} ({1}) has sent you a message\n{2}".format(sender_name, sender_email, form.cleaned_data['message'])
+            send_mail('Web Enquiry', message, 'info@thecodingsnail.co.uk', ['info@thecodingsnail.co.uk'], fail_silently=False)
             return render(request,'snailblog/contact.html',{'success' : True, 'selected' : 'contact'})
     else:
         form=ContactForm()
