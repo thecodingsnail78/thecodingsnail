@@ -4,10 +4,15 @@ from django.utils import timezone
 from django.views.generic import View
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from .models import Post, Comment
+from .models import Post, Comment, Item
 from .forms import PostForm,CommentForm, ContactForm
 
 # Create your views here.
+
+def video(request):
+
+    obj=Item.objects.all()
+    return render(request,'snailblog/video.html',{'obj':obj})
 
 def contact_us(request):
     if request.method == 'POST':
@@ -31,10 +36,11 @@ def about(request):
     return render(request, 'snailblog/about.html', {'selected' : 'about'})
 
 def resources(request):
-    return render(request, "snailblog/resources.html", {'selected' : 'resources'})
+    obj=Item.objects.all()
+    return render(request, "snailblog/resources.html", {'selected' : 'resources','obj':obj})
 
 def post_list(request):
-    posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'snailblog/post_list.html', {'posts':posts,'selected' : 'blog'})
     
 def post_detail(request,pk):

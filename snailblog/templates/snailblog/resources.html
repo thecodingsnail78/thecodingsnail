@@ -1,6 +1,13 @@
 {% extends 'snailblog/base.html' %}
 {% block content %}
-    <h1>Useful resources</h1>
+{% load embed_video_tags %}
+<h1>Ashton Gate Primary School Code Club</h1>
+<p>Follow along at home!</p>
+{% for i in obj %}
+    <h2>{{ i.title }}</h2>
+    {% video i.video 'small' %}
+{% endfor %}
+    <h1>Useful websites</h1>
     <li>CodeClub.org (<a href="http://www.codeclub.org">codeclub.org</a>)</li>
     <li>BBC Microbit (<a href="http://microbit.org">microbit</a>)</li>
     <li>Scratch (<a href="http://scratch.mit.edu">scratch</a>)</li>

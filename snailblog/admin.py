@@ -5,3 +5,11 @@ from .models import Post, Comment
 
 admin.site.register(Post)
 admin.site.register(Comment)
+
+from embed_video.admin import AdminVideoMixin
+from .models import Item
+
+class MyModelAdmin(AdminVideoMixin, admin.ModelAdmin):
+    pass
+
+admin.site.register(Item, MyModelAdmin)

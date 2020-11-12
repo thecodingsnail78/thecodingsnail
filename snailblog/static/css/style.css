@@ -281,12 +281,12 @@ table
 { margin: 10px 0 30px 0;}
 
 table tr th, table tr td
-{ background: #3B3B3B;
+{ background: #FFFFFF;
   color: #FFF;
   padding: 7px 4px;
   text-align: left;}
   
 table tr td
-{ background: #F0EFE2;
-  color: #47433F;
+{ background: #ffffff;
+  color: #FFFFFF;
   border-top: 1px solid #FFF;}
