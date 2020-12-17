@@ -1,14 +1,22 @@
 {% extends 'snailblog/base.html' %}
 {% block content %}
-    <h2>Contact Us</h2>
-    {% if success == True %}
-        <p>Thank you for contacting us!</p>
-    {% else %}
-    <p>We'd love to hear from you!</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
-    {% endif %}
+<div class="container-fluid bg-dark text-white">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Contact Us</h2>
+                {% if success == True %}
+                <p>Thank you for contacting us!</p>
+                {% else %}
+                <p>We'd love to hear from you!</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit" />
+                </form>
+                {% endif %}
+        </div>
+    </div>
+</div>
+    
 {% endblock %}
+

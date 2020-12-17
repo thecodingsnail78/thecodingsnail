@@ -1,14 +1,40 @@
 {% extends 'snailblog/base.html' %}
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                <p>published: {{ post.published_date }}</p>
+
+<div class="container-fluid bg-dark text-white">
+    <div class="col-md-12 bg-dark mb-0 text-center">
+        <h6><u>__o</u>/^ snailblog</h6>
+        <div class="row bg-dark">
+            <div id="accordion">
+            {% for month, posts in months.items %}
+            <div class="card bg-dark text-white text-left">
+                <div class="card-header bg-dark text-white" id="month{{month}}">
+                    <h5 class="mb-0 d-inline">
+                        <button class="btn btn-link btn-secondary bg-dark text-white" data-toggle="collapse" data-target="#collapse{{month}}" aria-expanded="true" aria-controls="collapse{{month}}">
+                        {{month}}
+                        </button>
+                    </h5>
+                    <a href="#" data-target="[data-parent='#child']" data-toggle="collapse" class="my-2 float-right"></a>
+                </div>
+                {% for pk, post in posts.items %}
+                <div id="collapse{{month}}" class="collapse" aria-labelledby="month{{month}}" data-parent="#accordion">
+                    <div class="card-body bg-dark text-white" id="child{{post.pk}}">
+                        <div class="card bg-dark border-dark text-white">
+                            <div class="card-header bg-dark text-white border-dark">
+                                <a href="#" data-toggle="collapse" data-target="#collapse{{month}}{{post.pk}}" class="bg-dark text-white">{{post.title}}</a>
+                            </div>
+                            <div class="card-body collapse bg-dark text-white" data-parent="#child{{post.pk}}" id="collapse{{month}}{{post.pk}}">
+                                {{post.text|linebreaksbr}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+            {% endfor %}
+            </div>
         </div>
-    {% endfor %}
+    </div>
+</div>
 {% endblock %}
-                
+    

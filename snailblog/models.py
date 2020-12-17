@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from embed_video.fields import EmbedVideoField
 
+
 class Item(models.Model):
     video = EmbedVideoField()  # same like models.URLField()
     title = models.CharField(max_length=200)
@@ -24,6 +25,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def month(self):
+        return self.published_date.strftime('%B')
+    @property
+    def year(self):
+        return self.published_date.strftime('%Y')
 
 class Comment(models.Model):
     post = models.ForeignKey('snailblog.Post',on_delete=models.CASCADE,related_name='comments' )

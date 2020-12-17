@@ -41,8 +41,17 @@ def resources(request):
 
 def post_list(request):
     posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'snailblog/post_list.html', {'posts':posts,'selected' : 'blog'})
+    #my_months = [x.month + "_" + x.year for x in posts]
+    my_months = [x.month for x in posts]
+    months = {}
+    for month in my_months:
+        months[month] = {}
+        for post in posts:
+            if post.month == month:
+                months[month][post.pk] = post
     
+    return render(request, 'snailblog/post_list.html', {'posts':posts,'selected' : 'blog', 'len': len(posts), 'months': months})    
+
 def post_detail(request,pk):
     post=get_object_or_404(Post,pk=pk)
     return render(request,'snailblog/post_detail.html', {'post':post, 'selected' : 'blog'})

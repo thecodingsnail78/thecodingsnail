@@ -1,14 +1,30 @@
 {% extends 'snailblog/base.html' %}
 {% block content %}
 {% load embed_video_tags %}
-<h1>Ashton Gate Primary School Code Club</h1>
-<p>Follow along at home!</p>
-{% for i in obj %}
-    <h2>{{ i.title }}</h2>
-    {% video i.video 'small' %}
-{% endfor %}
-    <h1>Useful websites</h1>
-    <li>CodeClub.org (<a href="http://www.codeclub.org">codeclub.org</a>)</li>
-    <li>BBC Microbit (<a href="http://microbit.org">microbit</a>)</li>
-    <li>Scratch (<a href="http://scratch.mit.edu">scratch</a>)</li>
+<div class="container-fluid bg-dark rounded-bottom">
+    <div class="row bg-dark text-white">
+        {% for i in obj %}
+            <div class="col-md">
+                <h6>{{ i.title }}</h6>
+                {% video i.video 'small' %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row bg-dark text-white">
+        <div class="col-3">
+            <h6>Useful links</h6>
+        </div>
+        <div class="col-3">
+            <a href="http://www.codeclub.org">CodeClub.org</a>
+        </div>
+        <div class="col-3">
+            <a href="http://microbit.org">BBC Microbit</a>
+        </div>
+        <div class="col-3">
+            <a href="http://scratch.mit.edu">Scratch</a>
+        </div>
+    </div>
+</div>
+
+    
 {% endblock %}

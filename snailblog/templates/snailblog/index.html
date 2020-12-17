@@ -1,13 +1,23 @@
 {% extends 'snailblog/base.html' %}
 {% block content %}
-    <h1>Welcome!</h1>
-    <span class="right"><img src="static/images/gail.jpg" alt="A pic of Gail" width="20%"/></span>
-    <p width="80%">My name is Gail, I'm a stay-at-home mum of two. My youngest has just made that
-        fledgling leap to secondary school. I'm trying to remember how my brain works.
-        I've done lots of coding (well scripting really) over the years, I went from C 
-        to Perl to python, with a bit of teaching kids programming using scratch
-        and the BBC microbit thrown in. Now I'm having some fun with Django!
-    </p>
-     <p>You can find me on Twitter @thesnail or email gail [at] thecodingsnail [dot] co [dot] uk</p>
-     <a href="https://twitter.com/thesnail?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @thesnail</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="container-fluid bg-dark rounded-bottom">
+    <div class="row bg-dark justify-content-center">
+      <div class="col-sm-3 bg-dark">
+        <div class="card text-center bg-dark border-dark">
+          <img src="/static/images/gail.jpg" class="rounded card-img-top" alt="...">
+          <h5 class="card-body bg-dark text-white"></h5>
+        </div>
+      </div>
+      <div class="col-sm-9 bg-dark">
+        <div class="card text-left bg-dark border-dark">
+          <h6 class="card-body bg-dark text-white">
+            My name is Gail, I'm a stay-at-home mum of two. My youngest has just made that
+            fledgling leap to secondary school. I'm trying to remember how my brain works.
+            I've done lots of coding (well scripting really) over the years, I went from C 
+            to Perl to python, with a bit of teaching kids programming using scratch
+            and the BBC microbit thrown in. Now I'm having some fun with Django!</h6>
+        </div>
+        
+      </div>
+  </div>
 {% endblock %}
